@@ -4,10 +4,12 @@ Haskell dynamic RTS loader
     Usage: rts-loader MAIN_CLOSURE [PRELOAD_LIBS..] libHSrts-*.so* libHSbase-*.so* [LIBS..] -- [HS_ARGV..]
 
 The idea is to compile (and distribute) Haskell executables as shared libraries
-and have this program load and execute them at runtime.
+and have this program load and execute them at runtime. [Short blog post explaining this more](http://dxld.at/tail/007-dynamically-loading-native-haskell-libraries-and-other-horrible-things.html).
 
 Integration with ghc-pkg to find library dependencies automatically will be
 included later.
+
+
 
 Example
 -------
