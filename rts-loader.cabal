@@ -1,0 +1,26 @@
+name:                rts-loader
+version:             0.1.0.0
+synopsis:            Dynamically load the GHC runtime system
+
+-- description: Compiler version independent RTS and program loader.
+
+license:             GPL-3
+license-file:        LICENSE
+author:              Daneil Gröber
+maintainer:          dxld@darkboxed.org
+copyright:           Copyright (C) 2016  Daniel Gröber
+category:            Distribution
+build-type:          Custom
+extra-source-files:  ChangeLog.md, README.md
+cabal-version:       >= 1.18
+
+executable rts-loader
+  main-is:           rts-loader.c
+  default-language:  Haskell98
+
+custom-setup
+  setup-depends:     base, Cabal, filepath
+
+source-repository head
+  type:              git
+  location:          https://github.com/DanielG/ghc-mod.git
