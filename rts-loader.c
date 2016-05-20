@@ -63,17 +63,17 @@ int preloader(int argc, char *argv[])
                 if(preload_slen + strlen(path) + strlen(" ") + 1 > preload_blen)
                 {
                         preload_blen *= 2;
-                        log_debug("realloc to %d (ablen=%d, slen=%d)", preload_blen, preload_blen/2, preload_slen);
                         preload = realloc(preload, preload_blen);
                         preload_ptr = strchr(preload, '\0');
                 }
 
                 int nchar = snprintf(preload_ptr, preload_blen - preload_slen, "%s ", path);
+                if(nchar < 0)
+                        log_errno(return 1, "snprintf() failed");
                 preload_slen += nchar;
                 preload_ptr  += nchar;
                 assert(strlen(preload_ptr) < preload_blen);
                 assert(preload_slen < preload_blen);
-
 
                 if(is_rtslib(path)) {
                         rts = path;
@@ -86,9 +86,22 @@ int preloader(int argc, char *argv[])
                 }
         }
 
-        log_debug(LD_PRELOAD"=\"%s\"", preload);
+        const char *old_preload = getenv(LD_PRELOAD) ? getenv(LD_PRELOAD) : "";
+        size_t final_preload_len = strlen(old_preload) + 1 + strlen(preload);
+        char *final_preload = malloc(final_preload_len);
+        if(!final_preload)
+                log_error(return 1, "malloc() failed");
 
-        setenv(LD_PRELOAD, preload, true);
+        int nchar = snprintf(final_preload, final_preload_len, "%s %s", old_preload, preload);
+        if(nchar < 0)
+                log_errno(return 1, "snprintf() failed");
+
+
+        log_debug(LD_PRELOAD"=\"%s\"", final_preload);
+
+        setenv("OLD_" LD_PRELOAD, old_preload, true);
+        setenv(LD_PRELOAD, final_preload, true);
+        free(final_preload);
 
         if(strlen(argv[0]) < 1)
                 abort();
@@ -108,6 +121,9 @@ int loader(int argc, char *argv[], char ***hs_argv)
 {
         if(argc < 2)
                 abort();
+
+        setenv(LD_PRELOAD, getenv("OLD_" LD_PRELOAD) ? getenv("OLD_" LD_PRELOAD) : "", true);
+        unsetenv("OLD_" LD_PRELOAD);
 
         char *rts = NULL;
         char *base = NULL;
