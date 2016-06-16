@@ -174,7 +174,7 @@ int loader(int argc, char *argv[], char ***hs_argv)
                         log_error(return 1, "dlopen(%s) failed: %s", path, dlerror());
         }
 
-        return 1;
+        log_error(return 1, "no libraries given or '--' missing");
 }
 
 typedef int (*rts_main_t)( int argc, char *argv[], StgClosure *main_closure, RtsConfig rts_config);
