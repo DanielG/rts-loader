@@ -223,7 +223,9 @@ int main(int argc, char *argv[])
         RtsConfig __conf;
         memcpy(&__conf, defRtsCfg_p, sizeof(__conf));
         __conf.rts_opts_enabled = RtsOptsSafeOnly;
+        #if __GLASGOW_HASKELL__ >= 708
         __conf.rts_hs_main = rtsTrue;
+        #endif
 
         rts_main_t hs_main_ = dlsym(RTLD_DEFAULT, "hs_main");
         if(!hs_main_)
