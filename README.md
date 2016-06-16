@@ -15,8 +15,8 @@ Example
 -------
 
 ```
-$ ./rts-loader ZCMain_main_closure $(ghc --print-libdir)/rts/libHSrts-ghc$(ghc --numeric-version).so $(ghc --print-libdir)/base_*/libHSbase-*-*-ghc$(ghc --numeric-version).so $PWD/libmain.so $PWD/libmain.so -- Main
+$ ./rts-loader ZCMain_main_closure $(ghc --print-libdir)/rts/libHSrts-ghc$(ghc --numeric-version).so $(ghc --print-libdir)/base_*/libHSbase-*-*-ghc$(ghc --numeric-version).so $PWD/libmain.so -- Main
 "main"
-$ ./rts-loader Main_notzumain_closure $(ghc --print-libdir)/rts/libHSrts-ghc$(ghc --numeric-version).so $(ghc --print-libdir)/base_*/libHSbase-*-*-ghc$(ghc --numeric-version).so $PWD/libmain.so $PWD/libmain.so -- Main
+$ ./rts-loader Main_notzumain_closure $(ghc --print-libdir)/rts/libHSrts-ghc$(ghc --numeric-version).so $(ghc --print-libdir)/base_*/libHSbase-*-*-ghc$(ghc --numeric-version).so $PWD/libmain.so -- Main
 "not main"
 ```
