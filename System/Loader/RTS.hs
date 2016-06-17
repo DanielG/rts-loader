@@ -71,9 +71,11 @@ execPackageMain verbosity comp pkg_db_stack prog_conf pkg_qual sym_id ways args
         -- TODO: enumerating all packages is silly slow
         pidx <- getInstalledPackages verbosity comp pkg_db_stack prog_conf
 
-        let Just ipi = lookupPackageQualifier pidx pkg_qual
-            Just base_ipi = lookupPackageQualifier pidx (PQName $ PackageName "base")
-            Just rts_ipi = lookupPackageQualifier pidx (PQName $ PackageName "rts")
+        let lookupPkg = lookupPackageQualifier pidx
+
+            Just ipi = lookupPackageQualifier pidx pkg_qual
+            Just base_ipi = lookupPkg (PQName $ PackageName "base")
+            Just rts_ipi = lookupPkg (PQName $ PackageName "rts")
 
             PackageIdentifier (PackageName pkg_name) _ = sourcePackageId ipi
             unit_id = installedUnitId ipi
