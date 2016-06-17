@@ -7,7 +7,13 @@
 
 #define log(fmt,...) fprintf(stderr, "[%s] " fmt "\n", __func__, ##__VA_ARGS__)
 
+#define log_nop(...)
+
+#ifdef NDEBUG
 #define log_debug log
+#else
+#define log_debug log_nop
+#endif
 
 #define log_errno(go, fmt, ...) ({                                  \
             char err[255];                                          \
