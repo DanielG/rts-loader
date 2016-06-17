@@ -1,25 +1,46 @@
 name:                rts-loader
 version:             0.1.0.0
-synopsis:            Dynamically load the GHC runtime system
-
--- description: Compiler version independent RTS and program loader.
+synopsis:            Dynamically load GHC runtime system
+description:         Execute functions from dynamic Haskell libraries
+                     independent of the RTS version
 
 license:             GPL-3
 license-file:        LICENSE
+license-files:       LICENSE LICENSE.GHC
 author:              Daneil Gröber
 maintainer:          dxld@darkboxed.org
 copyright:           Copyright (C) 2016  Daniel Gröber
 category:            Distribution
 build-type:          Custom
 extra-source-files:  ChangeLog.md, README.md
-cabal-version:       >= 1.18
+cabal-version:       == 1.24.*
+
+library
+  exposed-modules:   System.Loader.RTS
+  other-modules:     Paths_rts_loader,
+                     GHC.Way
+  default-language:  Haskell2010
+  build-depends:     base      < 4.10 && >= 4.9.0.0,
+                     zenc      == 0.1.1,
+                     unix      < 2.8  && >= 2.7.2.0,
+                     filepath  < 1.5  && >= 1.4.1.0,
+                     directory < 1.3  && >= 1.2.6.3,
+                     Cabal     < 1.25 && >= 1.24.0.0
 
 executable rts-loader
   main-is:           rts-loader.c
-  default-language:  Haskell98
+  x-install-dir:     $libexecdir
+  -- PR pending: https://github.com/haskell/cabal/pull/3461
+  -- install-dir:       $libexecdir
+  default-language:
+                     -- Not really, it's C actually. See Setup.hs
+                     Haskell98
 
 custom-setup
-  setup-depends:     base, Cabal, filepath
+  setup-depends:     base      < 4.10 && >= 4.9.0.0,
+                     filepath  < 1.5  && >= 1.4.1.0,
+                     Cabal     < 1.25 && >= 1.24.0.0
+
 
 source-repository head
   type:              git
