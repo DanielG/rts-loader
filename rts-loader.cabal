@@ -13,18 +13,18 @@ copyright:           Copyright (C) 2016  Daniel Gröber
 category:            Distribution
 build-type:          Custom
 extra-source-files:  ChangeLog.md, README.md
-cabal-version:       == 1.24.*
+cabal-version:       >= 1.24.0.0
 
 library
   exposed-modules:   System.Loader.RTS
   other-modules:     Paths_rts_loader,
                      GHC.Way
   default-language:  Haskell2010
-  build-depends:     base      < 4.10 && >= 4.9.0.0,
+  build-depends:     base      < 4.10 && >= 4.8.0.0,
                      zenc      == 0.1.1,
-                     unix      < 2.8  && >= 2.7.2.0,
-                     filepath  < 1.5  && >= 1.4.1.0,
-                     directory < 1.3  && >= 1.2.6.3,
+                     unix      < 2.8  && >= 2.7.1.0,
+                     filepath  < 1.5  && >= 1.4.0.0,
+                     directory < 1.3  && >= 1.2.2.0,
                      Cabal     < 1.25 && >= 1.24.0.0
 
 executable rts-loader
@@ -37,10 +37,9 @@ executable rts-loader
                      Haskell98
 
 custom-setup
-  setup-depends:     base      < 4.10 && >= 4.9.0.0,
-                     filepath  < 1.5  && >= 1.4.1.0,
+  setup-depends:     base      < 4.10 && >= 4.8.0.0,
+                     filepath  < 1.5  && >= 1.4.0.0,
                      Cabal     < 1.25 && >= 1.24.0.0
-
 
 source-repository head
   type:              git
