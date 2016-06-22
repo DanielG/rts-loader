@@ -1,28 +1,37 @@
+-- |
+-- Module      :  GHC.Way
+-- Copyright   :  (c) The University of Glasgow 2005
+--                Copyright (C) 2016  Daniel Gröber
+-- License     :  BSD3
+-- Stability   :  unknown, ask the GHC guys I guess ;)
+-- Portability :  portable
+--
+-- Stolen from GHC's 'DynFlags' module.
+--
+
 module GHC.Way where
 
 import Data.List
-
--- (c) The University of Glasgow 2005
 
 -- The Glasgow Haskell Compiler License
 
 -- Copyright 2002, The University Court of the University of Glasgow.
 -- All rights reserved.
-
+--
 -- Redistribution and use in source and binary forms, with or without
 -- modification, are permitted provided that the following conditions are met:
-
+--
 -- - Redistributions of source code must retain the above copyright notice,
 -- this list of conditions and the following disclaimer.
-
+--
 -- - Redistributions in binary form must reproduce the above copyright notice,
 -- this list of conditions and the following disclaimer in the documentation
 -- and/or other materials provided with the distribution.
-
+--
 -- - Neither name of the University nor the names of its contributors may be
 -- used to endorse or promote products derived from this software without
 -- specific prior written permission.
-
+--
 -- THIS SOFTWARE IS PROVIDED BY THE UNIVERSITY COURT OF THE UNIVERSITY OF
 -- GLASGOW AND THE CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
 -- INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
@@ -36,6 +45,7 @@ import Data.List
 -- OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 -- DAMAGE.
 
+-- | GHC library way, see <https://ghc.haskell.org/trac/ghc/wiki/Commentary/Rts/CompilerWays GHC Wiki/Commentary/Rts/CompilerWays>
 data Way
   = WayCustom String -- for GHC API clients building custom variants
   | WayThreaded

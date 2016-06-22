@@ -6,10 +6,6 @@ Haskell dynamic RTS loader
 The idea is to compile (and distribute) Haskell executables as shared libraries
 and have this program load and execute them at runtime. [Short blog post explaining this more](http://dxld.at/tail/007-dynamically-loading-native-haskell-libraries-and-other-horrible-things.html).
 
-Integration with ghc-pkg to find library dependencies automatically will be
-included later.
-
-
 
 Example
 -------
