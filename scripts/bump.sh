@@ -103,6 +103,11 @@ fi
 
 git checkout "rts-loader-$(echo $VERSION | major)"
 
+if git log -1 --pretty=%B | grep -q "^ChangeLog for"; do
+    echo "Error: empty release"
+    exit 1
+done
+
 add_changelog
 git commit -m "ChangeLog for $VERSION on release branch" ChangeLog
 
