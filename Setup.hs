@@ -58,7 +58,9 @@ buildLoaderExecutable pd lbi flags = do
       includeOpts = map ("-I"++) includes
       libs = ["dl"]
       libOpts = map ("-l"++) libs
-      opts = ["-o", targetDir </> exeName']
+      opts = [ "-std=gnu99"
+             , "-o", targetDir </> exeName'
+             ]
              ++ includeOpts
              ++ libOpts
              ++ [modulePath]
