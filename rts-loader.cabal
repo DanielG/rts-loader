@@ -1,5 +1,5 @@
 name:                rts-loader
-version:             0.0.0.0
+version:             0.0.0.1
 synopsis:            Dynamically load Haskell libraries
 description:
  Load and execute functions from Haskell dynamic libraries without being
