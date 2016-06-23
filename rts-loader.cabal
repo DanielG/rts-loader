@@ -17,7 +17,7 @@ copyright:           Copyright (C) 2016  Daniel Gröber
 category:            Distribution
 cabal-version:       >= 1.24.0.0
 build-type:          Custom
-extra-source-files:  ChangeLog.md, README.md
+extra-source-files:  ChangeLog, README.md
 tested-with:         GHC == 7.10.3, GHC == 8.0.1
 
 library
