@@ -2,3 +2,4 @@ rts-loader
 *.so
 *.o
 *.hi
+dist/
