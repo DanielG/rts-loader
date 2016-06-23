@@ -30,7 +30,7 @@ $ cabal install --only-dependencies && cabal configure && cabal build && cabal i
 $ rts_loader_libexecdir=dist/build/rts-loader dist/build/rts-loader-example/rts-loader-example
 ```
 
-"`rts_loader_libexecdir=...`" is only required if you didn't install rts-loader
+`rts_loader_libexecdir=...` is only required if you didn't install rts-loader
 into a sandbox or elsewhere already.
 
     import System.Loader.RTS
